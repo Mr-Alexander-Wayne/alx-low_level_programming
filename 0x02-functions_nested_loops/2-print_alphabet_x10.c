@@ -1,9 +1,11 @@
-#include "holberton.h"
+#include "main.h"
 
 /**
- * print_alphabet_x10 - prints 10 times the alphabet, in lowercase,
- * followed by a new line
- */
+*main - Entry point
+*
+*Return: 0 nothing, return void
+*/
+
 void print_alphabet_x10(void)
 {
 	char ch;
