@@ -2,7 +2,7 @@
 
 /**
 *main - Entry point
-*print_alphabet_x10
+*print_alphabet_x10 - Used to print
 *Return: 0 nothing, return void
 */
 
