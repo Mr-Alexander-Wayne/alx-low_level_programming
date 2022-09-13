@@ -2,11 +2,11 @@
 
 /**
 *main - Entry point
-*
+*print_alphabet_x10
 *Return: 0 nothing, return void
 */
 
-void print_alphabet(void)
+void print_alphabet_x10(void)
 {
 	char ch;
 
