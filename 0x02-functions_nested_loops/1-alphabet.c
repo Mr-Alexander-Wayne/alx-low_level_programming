@@ -1,8 +1,8 @@
 #include "main.h"
 
 /**
-*main - Entry point
-*print_alphabet_x10 - Used to print
+*main - print_alphabet_x10
+*
 *Return: 0 nothing, return void
 */
 
