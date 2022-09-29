@@ -1,32 +1,28 @@
-#include "holberton.h"
-
-int actual_prime(int n, int i);
-
+#include "main.h"
 /**
- * is_prime_number - says if an integer is a prime number or not
- * @n: number to evaluate
- *
- * Return: 1 if n is a prime number, 0 if not
+ * helper - does it for me
+ * @i: helper int
+ * @n: integer I'm testing
+ * Return: value
+ */
+int helper(int i, int n)
+{
+	if (n % i == 0 && n != i)
+		return (0);
+	if (n % i != 0 && i < n)
+		return (helper(i + 1, n));
+	return (1);
+}
+/**
+ * is_prime_number - is prime or not
+ * @n: integer to compare
+ * Return: boolean
  */
 int is_prime_number(int n)
 {
-	if (n <= 1)
-		return (0);
-	return (actual_prime(n, n - 1));
-}
+	int i = 2;
 
-/**
- * actual_prime - calculates if a number is prime recursively
- * @n: number to evaluate
- * @i: iterator
- *
- * Return: 1 if n is prime, 0 if not
- */
-int actual_prime(int n, int i)
-{
-	if (i == 1)
-		return (1);
-	if (n % i == 0 && i > 0)
+	if (n < 2)
 		return (0);
-	return (actual_prime(n, i - 1));
+	return (helper(i, n));
 }

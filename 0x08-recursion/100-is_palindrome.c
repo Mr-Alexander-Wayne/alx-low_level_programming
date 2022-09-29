@@ -1,27 +1,50 @@
 #include "main.h"
-
 /**
-* wildcmp - Compare two strings allowing for wildcard char
-*
-* @s1: String being compared
-*
-* @s2: String being compared against
-*
-* Return: 1 if considered identical, 0 otherwise
-*/
-
-int wildcmp(char *s1, char *s2)
+ * length - helps do it
+ * @s: string
+ * Return: string length
+ */
+int length(char *s)
 {
-	if (*s1 == '\0' && *s2 == '\0')
-		return (1);
-	if (*s1 == *s2)
-		return (wildcmp(s1 + 1, s2 + 1));
-	if (s2 == '')
+	int i = 0;
+
+	if (*s)
 	{
-		if ((s2 + 1) == '')
-			return (wildcmp(s1, s2 + 1));
-		if (wildcmp(s1 + 1, s2) || wildcmp(s1, s2 + 1))
-			return (1);
+		i = i + length(s + 1);
+		return (i += 1);
 	}
 	return (0);
+}
+/**
+ * helper2 - helps more
+ * @i: integer i
+ * @s: string
+ * Return: int value
+ */
+int helper2(int i, char *s)
+{
+	if (*s)
+	{
+		if (*s != s[length(s) - i])
+		{
+			return (0);
+		}
+		else
+		{
+			return (helper2(i + 1, s + 1));
+		}
+	}
+	return (1);
+}
+/**
+ * is_palindrome - is it paldindrome
+ * @s: string to check
+ * Return: boolean
+ */
+int is_palindrome(char *s)
+{
+	int i = 1;
+
+	return (helper2(i, s));
+
 }
