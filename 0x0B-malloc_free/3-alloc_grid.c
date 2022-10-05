@@ -1,43 +1,45 @@
-#include "main.h"
-#include <stdio.h>
 #include <stdlib.h>
+#include "main.h"
 
 /**
- * alloc_grid - nested loop to make grid
- * @width: width input
- * @height: height input
- * Return: pointer to a 2 dimensional array of integers.
+ * **alloc_grid - creates a two dimensional array of ints
+ * @width: width of the matrix
+ * @height: height of the matrix
+ *
+ * Return: pointer to the created matrix (Success)
+ * or NULL (Error)
  */
-
 int **alloc_grid(int width, int height)
 {
-	int **bodex;
-	int i, a;
+	int **arr;
+	int i, j;
 
-	if (width <= 0 || height <= 0)
+	if (height <= 0 || width <= 0)
 		return (NULL);
-	bodex = malloc(height * sizeof(int *));
-	/* if bodex is equal to Null return Null*/
-	if (bodex == NULL)
+
+	arr = (int **) malloc(sizeof(int *) * height);
+
+	if (arr == NULL)
 		return (NULL);
-	/for every i thats 0 and less than height increase i/
+
 	for (i = 0; i < height; i++)
 	{
-		/size of bodex[i] using malloc/
-		bodex[i] = malloc(width * sizeof(int));
-		/check if bodex[i] is equal to Null/
-		if (bodex[i] == NULL)
+		arr[i] = (int *) malloc(sizeof(int) * width);
+		if (arr[i] == NULL)
 		{
-			while (i >= 0)
-				/free bodex[i]/
-				free(bodex[i--]);
-			/* Free bodex*/
-			free(bodex);
+			free(arr);
+			for (j = 0; j <= i; j++)
+				free(arr[j]);
 			return (NULL);
 		}
-			/for every a that is less than width increase a/
-			for (a = 0; a < width; a++)
-				bodex[i][a] = 0;
 	}
-	return (bodex);
+
+	for (i = 0; i < height; i++)
+	{
+		for (j = 0; j < width; j++)
+		{
+			arr[i][j] = 0;
+		}
+	}
+	return (arr);
 }
